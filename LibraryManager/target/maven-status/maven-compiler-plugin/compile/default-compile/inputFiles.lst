@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+/home/joao/Areadetrabalho/ENSTA/ProjetFinal_IN205/ProjetFinal_IN205/LibraryManager/src/test/ModeleTest.java
+/home/joao/Areadetrabalho/ENSTA/ProjetFinal_IN205/ProjetFinal_IN205/LibraryManager/src/com/excilys/librarymanager/persistence/ConnectionManager.java
+/home/joao/Areadetrabalho/ENSTA/ProjetFinal_IN205/ProjetFinal_IN205/LibraryManager/src/com/excilys/librarymanager/utils/FillDatabase.java
+/home/joao/Areadetrabalho/ENSTA/ProjetFinal_IN205/ProjetFinal_IN205/LibraryManager/src/classes/Membres.java
+=======
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/com/excilys/librarymanager/utils/FillDatabase.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/com/excilys/librarymanager/persistence/ConnectionManager.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/test/ModeleTest.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/classes/Membres.java
+>>>>>>> 256e03337f648bda784bf80cf7032ddf3555c4b9
