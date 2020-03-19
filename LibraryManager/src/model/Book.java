@@ -9,6 +9,11 @@ public class Book{
     private String author;
     private String isbn;
 
+
+    public Book(){
+        
+    }
+
     /**
      * Basic constructor with autoincrement ID
      * @param title
