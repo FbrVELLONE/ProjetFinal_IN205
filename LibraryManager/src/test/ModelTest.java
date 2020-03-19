@@ -3,7 +3,7 @@ package test;
 /**
  * ModeleTest
  */
-public class ModeleTest {
+public class ModelTest {
 
     
 }

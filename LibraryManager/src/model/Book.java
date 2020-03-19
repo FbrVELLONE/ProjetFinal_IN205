@@ -23,6 +23,11 @@ public class Book{
     }
 
     /**
+     * Default consctrutor
+     */
+    public Book(){}
+
+    /**
      * get ID current number
      * @return id
      */

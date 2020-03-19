@@ -26,6 +26,11 @@ public class Loan{
     }
     
     /**
+     * Default constructor
+     */
+    public Loan(){}
+
+    /**
      * Get Loan's member
      * @return member
      */

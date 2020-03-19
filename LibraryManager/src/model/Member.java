@@ -38,6 +38,11 @@ public class Member {
     }
     
     /**
+     * Default consctrutor
+     */
+    public Member(){}
+
+    /**
      * Get ID number
      * @return actual ID
      */
