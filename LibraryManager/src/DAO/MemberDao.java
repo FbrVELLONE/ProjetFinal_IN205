@@ -1,6 +1,6 @@
 import java.util.List;
 
-import com.excilys.librarymanager.exception.DaoException;
+import exception.DaoException;
 import model.Member;
 
 public interface MemberDao {
