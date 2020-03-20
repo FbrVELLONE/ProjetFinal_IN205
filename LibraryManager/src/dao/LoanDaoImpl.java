@@ -295,10 +295,10 @@ public class LoanDaoImpl implements LoanDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_CreateQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setInt(0, idMembre);
-            stmt.setInt(1, idLivre);
-            stmt.setString(2, dateLoan+"");
-            stmt.setString(3, null);
+            stmt.setInt(1, idMembre);
+            stmt.setInt(2, idLivre);
+            stmt.setString(3, dateLoan+"");
+            stmt.setString(4, null);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -331,11 +331,11 @@ public class LoanDaoImpl implements LoanDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_UpdateQuery);
-            stmt.setInt(0, Loan.getMember().getID());
-            stmt.setInt(1, Loan.getBook().getID());
-            stmt.setString(2, Loan.getLoanDate()+"");
-            stmt.setString(3, Loan.getReturnDate()+"");
-            stmt.setInt(4, Loan.getID());
+            stmt.setInt(1, Loan.getMember().getId());
+            stmt.setInt(2, Loan.getBook().getId());
+            stmt.setString(3, Loan.getLoanDate()+"");
+            stmt.setString(4, Loan.getReturnDate()+"");
+            stmt.setInt(5, Loan.getId());
                         
 
             System.out.println("Loan " + Loan + "successfull updated!");

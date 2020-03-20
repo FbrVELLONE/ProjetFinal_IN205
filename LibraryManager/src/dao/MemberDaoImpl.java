@@ -96,7 +96,7 @@ public class MemberDaoImpl implements MemberDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_SelectIDQuery);
-            stmt.setString(0, id+"");
+            stmt.setInt(1, id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -148,12 +148,12 @@ public class MemberDaoImpl implements MemberDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_CreateQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(0, nom);
-            stmt.setString(1, prenom);
-            stmt.setString(2, adresse);
-            stmt.setString(3, email);
-            stmt.setString(4, telephone);
-            stmt.setString(5, subscription+"");
+            stmt.setString(1, nom);
+            stmt.setString(2, prenom);
+            stmt.setString(3, adresse);
+            stmt.setString(4, email);
+            stmt.setString(5, telephone);
+            stmt.setString(6, subscription+"");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,13 +198,13 @@ public class MemberDaoImpl implements MemberDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_UpdateQuery);
-            stmt.setString(0, Member.getLastName());
-            stmt.setString(1, Member.getFirstName());
-            stmt.setString(2, Member.getAdress());
-            stmt.setString(3, Member.getEmail());
-            stmt.setString(4, Member.getTelephone());
-            stmt.setString(5, Member.getSubscription()+"");
-            stmt.setInt(6, Member.getID());
+            stmt.setString(1, Member.getLastName());
+            stmt.setString(2, Member.getFirstName());
+            stmt.setString(3, Member.getAdress());
+            stmt.setString(4, Member.getEmail());
+            stmt.setString(5, Member.getTelephone());
+            stmt.setString(6, Member.getSubscription()+"");
+            stmt.setInt(7, Member.getId());
 
             System.out.println("Member " + Member + "successfull updated!");
         } catch (Exception e) {

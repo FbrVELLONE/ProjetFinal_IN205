@@ -17,6 +17,7 @@ public class Member {
     private static int ID = 0;
     private String lastName, firstName, email, telephone, adress;
     private Subscription mSubscription;
+    private int id;
 
     /**
      * Basic constructor which inscrements amount of ID
@@ -34,6 +35,7 @@ public class Member {
         this.telephone = telephone;
         this.adress = adress;
         ID++;
+        this.id = ID;
         this.mSubscription = subscription;
     }
     
@@ -43,11 +45,19 @@ public class Member {
     public Member(){}
 
     /**
-     * Get ID number
+     * Get last ID number
      * @return actual ID
      */
     public int getID(){
         return ID;
+    }
+
+    /**
+     * Return member fixed ID
+     * @return
+     */
+    public int getId(){
+        return this.id;
     }
 
     /**
@@ -151,12 +161,13 @@ public class Member {
      * Change of toString method to reference all class variables in output
      */
     public String toString(){
-        return "\nId: " + ID +
+        return "\nId: " + this.id +
         "\nLast name: " + this.lastName +
         "\nFirst name: " + this.firstName +
         "\nAddress: " + this.adress +
         "\nEmail: " + this.email +
         "\nPhone number: " + this.telephone +
-        "\nSubscription: " + this.mSubscription;
+        "\nSubscription: " + this.mSubscription +
+        "\n";
     }
 }

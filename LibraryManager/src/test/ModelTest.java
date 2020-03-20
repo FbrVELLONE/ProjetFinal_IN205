@@ -1,5 +1,7 @@
 package test;
 
+import model.*;
+
 /**
  * ModeleTest
  */

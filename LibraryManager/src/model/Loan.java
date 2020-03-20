@@ -9,6 +9,7 @@ public class Loan{
     private Member mMember;
     private Book mBook;
     private LocalDate loanDate, returnDate;
+    private int id;
 
     /**
      * Basic constructor with autoincrement ID
@@ -23,6 +24,7 @@ public class Loan{
         this.loanDate = loanDate;
         this.returnDate = returnDate;
         ID++;
+        this.id = ID;
     }
     
     /**
@@ -60,6 +62,14 @@ public class Loan{
      */
     public int getID(){
         return ID;
+    }
+
+    /**
+     * Return loan fixed ID
+     * @return
+     */
+    public int getId(){
+        return this.id;
     }
 
     /**
@@ -103,10 +113,11 @@ public class Loan{
     }
 
     public String toString(){
-        return "\nID: " + ID +
+        return "\nID: " + this.id +
             "\nMember ID: " + this.mMember.getID() +
             "\nBook ID: " + this.mBook.getID() +
             "\nLoanDate: " + this.loanDate +
-            "\nReturnDate: " + this.returnDate;
+            "\nReturnDate: " + this.returnDate +
+            "\n";
     }
 }
