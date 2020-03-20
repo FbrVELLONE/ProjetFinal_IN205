@@ -22,7 +22,6 @@ public class BookDaoImpl implements BookDao {
         return instance;
     }
 
-
     private static final String SELECT_ALL = "SELECT id, titre, auteur, isbn FROM livre ";
     private static final String SELECT_ONE = "SELECT id, titre, auteur, isbn FROM livre WHERE id=?;";
     private static final String CREATE = "INSERT INTO livre(titre, auteur, isbn) VALUES (?, ?, ?);";
