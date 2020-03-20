@@ -14,15 +14,13 @@ import model.Book;
 import com.excilys.librarymanager.persistence.ConnectionManager;
 
 public class BookDaoImpl implements BookDao {
-    
-    //private static Singleton instance;
-    //private Singleton(){}
-    //public static Singleton getInstance(){
-    //if (instance == null){
-    //instance = new Singleton();
-    //}
-    //return instance;
-    //}
+    //Singleton
+    private static BookDaoImpl instance;
+    private BookDaoImpl(){};
+    public static BookDaoImpl getInstance(){
+        if (instance == null) instance = new BookDaoImpl();
+        return instance;
+    }
 
 
     private static final String SELECT_ALL = "SELECT id, titre, auteur, isbn FROM livre ";

@@ -10,10 +10,6 @@ public class Book{
     private String isbn;
 
 
-    public Book(){
-        
-    }
-
     /**
      * Basic constructor with autoincrement ID
      * @param title
