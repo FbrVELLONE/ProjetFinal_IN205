@@ -17,5 +17,5 @@ public interface LoanService {
 	public void returnBook(int id) throws ServiceException;
 	public int count() throws ServiceException;
 	public boolean isLivreDispo(int idLivre) throws ServiceException;
-	public boolean isEmpruntPossible(Member membre) throws ServiceException ;
+	public boolean isEmpruntPossible(Member membre) throws ServiceException;
 }

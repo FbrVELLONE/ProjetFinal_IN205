@@ -67,8 +67,8 @@ public class LoanDaoImpl implements LoanDao{
 
         //Try to get all requests
         try {
-            MemberDaoImpl memberDao = MemberDaoImpl.getInstance();
-            BookDaoImpl bookDao = BookDaoImpl.getInstance();
+            MemberDao memberDao = MemberDaoImpl.getInstance();
+            BookDao bookDao = BookDaoImpl.getInstance();
             while(rst.next()){
                 loans.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
@@ -114,8 +114,8 @@ public class LoanDaoImpl implements LoanDao{
 
         //Try to get all requests
         try {
-            MemberDaoImpl memberDao = MemberDaoImpl.getInstance();
-            BookDaoImpl bookDao = BookDaoImpl.getInstance();
+            MemberDao memberDao = MemberDaoImpl.getInstance();
+            BookDao bookDao = BookDaoImpl.getInstance();
             while (rst.next()) {
                 currentLoans.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
@@ -163,8 +163,8 @@ public class LoanDaoImpl implements LoanDao{
 
         //Try to get all requests
         try {
-            MemberDaoImpl memberDao = MemberDaoImpl.getInstance();
-            BookDaoImpl bookDao = BookDaoImpl.getInstance();
+            MemberDao memberDao = MemberDaoImpl.getInstance();
+            BookDao bookDao = BookDaoImpl.getInstance();
             while (rst.next()) {
                 loanByMembre.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
@@ -212,8 +212,8 @@ public class LoanDaoImpl implements LoanDao{
 
         //Try to get all requests
         try {
-            MemberDaoImpl memberDao = MemberDaoImpl.getInstance();
-            BookDaoImpl bookDao = BookDaoImpl.getInstance();
+            MemberDao memberDao = MemberDaoImpl.getInstance();
+            BookDao bookDao = BookDaoImpl.getInstance();
             while (rst.next()) {
                 loanByBooks.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
@@ -261,8 +261,8 @@ public class LoanDaoImpl implements LoanDao{
 
         //Try to get all requests
         try {
-            MemberDaoImpl memberDao = MemberDaoImpl.getInstance();
-            BookDaoImpl bookDao = BookDaoImpl.getInstance();
+            MemberDao memberDao = MemberDaoImpl.getInstance();
+            BookDao bookDao = BookDaoImpl.getInstance();
             if (rst.next()) {
                 chosenLoan = new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate());
             }
