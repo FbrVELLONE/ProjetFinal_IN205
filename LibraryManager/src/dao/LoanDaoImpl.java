@@ -73,7 +73,6 @@ public class LoanDaoImpl implements LoanDao{
                 loans.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
 
-            System.out.println("All loans list: " + loans);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -120,7 +119,6 @@ public class LoanDaoImpl implements LoanDao{
                 currentLoans.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
 
-            System.out.println("All currents loans not returneds yet: " + currentLoans);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -169,7 +167,6 @@ public class LoanDaoImpl implements LoanDao{
                 loanByMembre.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
 
-            System.out.println("All currents loans not returneds yet by member: " + loanByMembre);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -218,7 +215,6 @@ public class LoanDaoImpl implements LoanDao{
                 loanByBooks.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
 
-            System.out.println("All currents loans not returneds yet by books: " + loanByBooks);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -267,7 +263,6 @@ public class LoanDaoImpl implements LoanDao{
                 chosenLoan = new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate());
             }
 
-            System.out.println("Current loan not returned yet: " + chosenLoan);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -304,9 +299,8 @@ public class LoanDaoImpl implements LoanDao{
         }
         
         //Try for exec the request
-        ResultSet rst = null;
         try {
-            rst = stmt.executeQuery();
+            stmt.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -337,8 +331,6 @@ public class LoanDaoImpl implements LoanDao{
             stmt.setString(3, Loan.getReturnDate()+"");
             stmt.setInt(4, Loan.getID());
                         
-
-            System.out.println("Loan " + Loan + "successfull updated!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -389,7 +381,6 @@ public class LoanDaoImpl implements LoanDao{
                 totalLoans = rst.getInt(1);
             }
 
-            System.out.println("Total members: " + totalLoans);
         } catch (Exception e) {
             e.printStackTrace();
         }

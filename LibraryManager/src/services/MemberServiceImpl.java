@@ -8,7 +8,7 @@ import dao.MemberDao;
 import dao.MemberDaoImpl;
 
 /**
- * MemberServiceImpl
+ * MemberServiceImpl is the class responsible for making the connection with the database calls, passing the rules of service to member class
  */
 public class MemberServiceImpl implements MemberService {
     //Singleton
@@ -21,6 +21,7 @@ public class MemberServiceImpl implements MemberService {
     
     /**
      * Call the instances responsables for DB manipulation
+     * @return The total list in DB
      */
     @Override
     public List<Member> getList() throws ServiceException{
@@ -29,8 +30,10 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             loanAllList = memberDao.getList();
+
+            System.out.println("All members list: " + loanAllList);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServiceException("Can't get total list!\n", e);
         }
 
         return loanAllList;
@@ -38,6 +41,7 @@ public class MemberServiceImpl implements MemberService {
 
     /**
      * Return all loan possibles yet
+     * @return The total list of possible Bookings by member
      */
     @Override
 	public List<Member> getListMembreEmpruntPossible() throws ServiceException{
@@ -53,8 +57,10 @@ public class MemberServiceImpl implements MemberService {
                     membersLoanDispo.add(members.get(i));
                 }
             }
+
+            System.out.println("Returning all loans possibles: " + membersLoanDispo);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServiceException("Can't get possibles bookings by member!\n", e);
         }
 
         return membersLoanDispo;
@@ -63,6 +69,7 @@ public class MemberServiceImpl implements MemberService {
     /**
      * Get the chosen member By ID
      * @param id Chosen memberID
+     * @return The choose member
      */
     @Override
     public Member getById(int id) throws ServiceException{
@@ -71,8 +78,10 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             chosenOne = memberDao.getById(id);
+
+            System.out.println("Chosen member: " + chosenOne);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServiceException("Can't get individual member!\n", e);
         }
 
         return chosenOne;
@@ -86,6 +95,7 @@ public class MemberServiceImpl implements MemberService {
      * @param email
      * @param telephone
      * @param subscription
+     * @return The created ID
      */
     @Override
 	public int create(String nom, String prenom, String adresse, String email, String telephone, Member.Subscription subscription) throws ServiceException{
@@ -94,15 +104,16 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             if (nom == null || prenom == null || nom == "" || prenom == ""){
-                throw new ServiceException("Nom ou Prenom null ou vide");
+                throw new ServiceException("First or Last names empties! Can't create");
             } else{
                 nom = nom.toUpperCase();
                 prenom = prenom.toUpperCase();
                 
                 id = memberDao.create(nom, prenom, adresse, email, telephone, subscription);
+                System.out.println("Actual new member ID: " + id);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServiceException("Can't create for a reason!\n", e);
         }
 
 
@@ -118,13 +129,15 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             if(membre.getFirstName() == null || membre.getLastName() == null || membre.getFirstName() == "" || membre.getLastName() == ""){
-                throw new ServiceException("Nom ou Prenom null ou vide");
+                throw new ServiceException("First or Last names empties! Can't update");
             } else{
                 membre.setLastName(membre.getLastName().toUpperCase());
                 memberDao.update(membre);
+
+                System.out.println("Member " + membre + "successfull updated!");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServiceException("Can't be updated!\n", e);
         }
 
     };
@@ -139,13 +152,15 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             memberDao.delete(id);
+            System.out.println("Member " + id + "successfull deleted!");
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServiceException("Can't be deleted!\n", e);
         }
     };
 
     /**
      * Return the total members into DB
+     * @return One integer with total number
      */
     @Override
 	public int count() throws ServiceException{
@@ -154,8 +169,9 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             total = memberDao.count();
+            System.out.println("Total members: " + total);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServiceException("Can't count all things!\n", e);
         }
 
         return total;

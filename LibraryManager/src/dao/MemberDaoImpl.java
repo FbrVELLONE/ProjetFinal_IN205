@@ -68,7 +68,6 @@ public class MemberDaoImpl implements MemberDao{
                 members.add(new Member(rst.getString("nom"), rst.getString("prenom"), rst.getString("adresse"), rst.getString("email"), rst.getString("telephone"), Member.Subscription.valueOf(rst.getString("abonnement"))));
             }
 
-            System.out.println("All members list: " + members);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,7 +114,6 @@ public class MemberDaoImpl implements MemberDao{
                 memberById = new Member(rst.getString("nom"), rst.getString("prenom"), rst.getString("adresse"), rst.getString("email"), rst.getString("telephone"), Member.Subscription.valueOf(rst.getString("abonnement")));
             }
 
-            System.out.println("Chosen member: " + memberById);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -172,7 +170,6 @@ public class MemberDaoImpl implements MemberDao{
                 id = rst.getInt(1);
             }
 
-            System.out.println("Actual new member ID: " + id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -206,7 +203,6 @@ public class MemberDaoImpl implements MemberDao{
             stmt.setString(5, Member.getSubscription()+"");
             stmt.setInt(6, Member.getID());
 
-            System.out.println("Member " + Member + "successfull updated!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -245,7 +241,7 @@ public class MemberDaoImpl implements MemberDao{
         //Try for exec the request
         try {
             stmt.executeUpdate();
-            System.out.println("Member " + id + "successfull deleted!");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -289,7 +285,6 @@ public class MemberDaoImpl implements MemberDao{
                 totalMembers = rst.getInt(1);
             }
 
-            System.out.println("Total members: " + totalMembers);
         } catch (Exception e) {
             e.printStackTrace();
         }

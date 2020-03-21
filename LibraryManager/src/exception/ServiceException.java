@@ -1,7 +1,7 @@
 package exception;
 
 /**
- * ServiceException
+ * ServiceException is a class created to provide the exceptions linked to service type structures
  */
 public class ServiceException extends Exception{
     public ServiceException() {
@@ -15,6 +15,8 @@ public class ServiceException extends Exception{
 	 */
 	public ServiceException(String message, Throwable cause) {
 		super(message, cause);
+		System.out.println("\n");
+		cause.printStackTrace();
 	}
 	/**
 	 * Return message passed as exception
