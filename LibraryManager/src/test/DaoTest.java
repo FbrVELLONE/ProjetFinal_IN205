@@ -13,16 +13,18 @@ public class DaoTest{
         MemberDao memberDao = MemberDaoImpl.getInstance();
         
         // getlist
-		loanDao.getList();
-		System.out.println("aqui \n");
-		loanDao.getListCurrent();
-		System.out.println("\n");
+		//loanDao.getList();
+		//System.out.println("aqui1.  \n");
+		////loanDao.getListCurrent();
+		//System.out.println("\n");
+        //
+        //
+        //bookDao.getList();
+		//System.out.println("aqui \n");
+        //
+        //memberDao.getList();
+        //System.out.println("aqui \n");
         
-        
-        bookDao.getList();
-		System.out.println("aqui \n");
-        
-        memberDao.getList();
-		System.out.println("aqui \n");
+        loanDao.getById(3);
     }	   
 }

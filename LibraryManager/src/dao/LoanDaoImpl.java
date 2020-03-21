@@ -246,7 +246,7 @@ public class LoanDaoImpl implements LoanDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_SelectOneQuery);
-            stmt.setInt(0, id);
+            stmt.setInt(1, id);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -264,7 +264,7 @@ public class LoanDaoImpl implements LoanDao{
             MemberDaoImpl memberDao = MemberDaoImpl.getInstance();
             BookDaoImpl bookDao = BookDaoImpl.getInstance();
             if (rst.next()) {
-                chosenLoan = new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate());
+                chosenLoan = new Loan(rst.getInt("id"), memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate());
             }
 
             System.out.println("Current loan not returned yet: " + chosenLoan);

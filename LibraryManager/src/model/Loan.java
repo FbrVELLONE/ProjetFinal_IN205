@@ -26,6 +26,15 @@ public class Loan{
         ID++;
         this.id = ID;
     }
+
+    public Loan(int id, Member mMember, Book mBook, LocalDate loanDate, LocalDate returnDate){
+        this.mBook = mBook;
+        this.mMember = mMember;
+        this.loanDate = loanDate;
+        this.returnDate = returnDate;
+        this.id = id;
+    }
+    
     
     /**
      * Default constructor
