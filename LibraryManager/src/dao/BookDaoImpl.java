@@ -29,24 +29,26 @@ public class BookDaoImpl implements BookDao {
 	private static final String DELETE = "DELETE FROM livre WHERE id=?;";
     private static final String COUNT= "SELECT count(*) AS count FROM livre";
 
-
+    /** 
+     * request that returns list of books
+    */
     @Override
     public List<Book> getList() throws DaoException{
-        List<Book> books = new ArrayList<>();
+        List<Book> listOfBooks = new ArrayList<>();
 
         try (Connection connection = ConnectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL);
              ResultSet result = preparedStatement.executeQuery();) {
 
             while (result.next()){
-                books.add(new Book(result.getString("titre"), result.getString("auteur"), result.getString("isbn")));
+                listOfBooks.add(new Book(result.getString("titre"), result.getString("auteur"), result.getString("isbn")));
             }
 
         } catch (SQLException e) {
             //throw new DaoException("Error while uploading list of books from the database", e);
         }
 
-        return books;
+        return listOfBooks;
     }
 
 
@@ -56,13 +58,18 @@ public class BookDaoImpl implements BookDao {
         return preparedStatement.executeQuery();
     }
 
+    /**
+     * request that returns one required book, fetched by its ID
+     * @param id identifier of requested book
+     * @return book 
+     */
     @Override
     public Book getById(int id) throws DaoException{
         Book book = new Book();
         
         try (Connection connection = ConnectionManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE);
-             ResultSet result = GetByIdStatement(preparedStatement, id);) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ONE);
+            ResultSet result = GetByIdStatement(preparedStatement, id);){
             
             if (result.next()) {
                 book.setTitle(result.getString("titre"));
@@ -84,7 +91,15 @@ public class BookDaoImpl implements BookDao {
         preparedStatement.setString(3, isbn);
         preparedStatement.executeUpdate();
         return preparedStatement.getGeneratedKeys();
-    } 
+    }
+    
+    /**
+     * request to create a book that is created using its title, author and isbn
+     * @param titre
+     * @param auteur
+     * @param isbn
+     * @return the new book's id
+     */
     @Override
 	public int create (String titre, String auteur, String isbn) throws DaoException{
         int id = -1;
@@ -105,7 +120,10 @@ public class BookDaoImpl implements BookDao {
         return id;
     }
 
-
+    /**
+     * request to update existing book
+     * @param book
+     */
     @Override
 	public void update(Book book) throws DaoException {
         try (Connection connection = ConnectionManager.getConnection();
@@ -122,7 +140,10 @@ public class BookDaoImpl implements BookDao {
 		}
     }
 
-
+    /**
+     * request to delete existing book from database; book fetched by its id
+     * @param id
+     */
     @Override
     public void delete(int id) throws DaoException{
         try (Connection connection = ConnectionManager.getConnection();
@@ -137,6 +158,11 @@ public class BookDaoImpl implements BookDao {
 		}
     }
 
+
+    /**
+     * request to count the number of existing books in database
+     * @return the number of books
+     */
     @Override
     public int count() throws DaoException{
         int nombreDeLivres = 0;
