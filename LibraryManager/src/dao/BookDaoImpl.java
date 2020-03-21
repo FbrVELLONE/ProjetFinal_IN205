@@ -43,7 +43,7 @@ public class BookDaoImpl implements BookDao {
             }
 
         } catch (SQLException e) {
-            //throw new DaoException("Error while uploading list of books from the database", e);
+            throw new DaoException("Error while uploading list of books from the database", e);
         }
 
         return books;
@@ -70,7 +70,7 @@ public class BookDaoImpl implements BookDao {
                 book.setIsbn(result.getString("isbn"));
             }
         } catch (SQLException e) {
-           // throw new DaoException("Error while uploading a books whose id is " + id + " from the database", e);
+            throw new DaoException("Error while uploading a books whose id is " + id + " from the database", e);
         }
 
         return book;
@@ -98,7 +98,7 @@ public class BookDaoImpl implements BookDao {
             }
 
         } catch (SQLException e) {
-            //throw new DaoException("Error. Cannot create book" + titre, e);
+            throw new DaoException("Error. Cannot create book" + titre, e);
         }
 
         return id;
@@ -116,7 +116,7 @@ public class BookDaoImpl implements BookDao {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-			//throw new DaoException("Error while updating a book " + book + "in the database", e);
+			throw new DaoException("Error while updating a book " + book + "in the database", e);
 		}
     }
 
@@ -130,7 +130,7 @@ public class BookDaoImpl implements BookDao {
             preparedStatement.executeUpdate();
             
 		} catch (SQLException e) {
-			//throw new DaoException("Error while deleting a book whose id is " + id + " from the database", e);
+			throw new DaoException("Error while deleting a book whose id is " + id + " from the database", e);
 		}
     }
 
@@ -147,7 +147,7 @@ public class BookDaoImpl implements BookDao {
                 
             }
         } catch (SQLException e) {
-            //throw new DaoException("Error while counting the number of books in the database", e);
+            throw new DaoException("Error while counting the number of books in the database", e);
         } 
         
         return nombreDeLivres;

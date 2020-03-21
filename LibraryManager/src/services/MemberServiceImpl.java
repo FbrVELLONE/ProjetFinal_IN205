@@ -14,7 +14,7 @@ public class MemberServiceImpl implements MemberService {
     //Singleton
     private static MemberServiceImpl instance;
     private MemberServiceImpl(){};
-    public MemberServiceImpl getInstance(){
+    public static MemberServiceImpl getInstance(){
         if (instance == null)   instance = new MemberServiceImpl();
         return instance;
     }
