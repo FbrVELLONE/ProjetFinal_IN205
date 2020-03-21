@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import model.*;
 /**
- * ModelTest
+ * ModelTest Class concerning the implementation tests of the book, member and loan models
  */
 public class ModelTest {
 
