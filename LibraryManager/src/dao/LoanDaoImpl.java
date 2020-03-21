@@ -197,7 +197,7 @@ public class LoanDaoImpl implements LoanDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_SelectNotReturnedLivQuery);
-            stmt.setInt(0, idLivre);
+            stmt.setInt(1, idLivre);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -298,7 +298,7 @@ public class LoanDaoImpl implements LoanDao{
             stmt.setInt(1, idMembre);
             stmt.setInt(2, idLivre);
             stmt.setString(3, dateLoan+"");
-            stmt.setString(4, null);
+            stmt.setString(4, dateLoan.plusDays(7l)+"");
         } catch (Exception e) {
             e.printStackTrace();
         }

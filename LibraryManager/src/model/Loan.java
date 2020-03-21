@@ -123,8 +123,8 @@ public class Loan{
 
     public String toString(){
         return "\nID: " + this.id +
-            "\nMember ID: " + this.mMember.getID() +
-            "\nBook ID: " + this.mBook.getID() +
+            "\nMember ID: " + this.mMember.getId() +
+            "\nBook ID: " + this.mBook.getId() +
             "\nLoanDate: " + this.loanDate +
             "\nReturnDate: " + this.returnDate +
             "\n";

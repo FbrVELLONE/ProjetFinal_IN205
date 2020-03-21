@@ -112,7 +112,7 @@ public class MemberDaoImpl implements MemberDao{
         //Try to get all requests
         try {
             if(rst.next()){
-                memberById = new Member(rst.getString("nom"), rst.getString("prenom"), rst.getString("adresse"), rst.getString("email"), rst.getString("telephone"), Member.Subscription.valueOf(rst.getString("abonnement")));
+                memberById = new Member(rst.getString("nom"), rst.getString("prenom"), rst.getString("email"), rst.getString("telephone"), rst.getString("adresse"), Member.Subscription.valueOf(rst.getString("abonnement")));
             }
 
             System.out.println("Chosen member: " + memberById);
@@ -237,7 +237,7 @@ public class MemberDaoImpl implements MemberDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_DeleteQuery);
-            stmt.setInt(0, id);
+            stmt.setInt(1, id);
         } catch (Exception e) {
             e.printStackTrace();
         }
