@@ -17,6 +17,7 @@ public class Member {
     private static int ID = 0;
     private String lastName, firstName, email, telephone, adress;
     private Subscription mSubscription;
+    private int id;
 
     /**
      * Basic constructor which inscrements amount of ID
@@ -34,6 +35,27 @@ public class Member {
         this.telephone = telephone;
         this.adress = adress;
         ID++;
+        this.id = ID;
+        this.mSubscription = subscription;
+    }
+
+    /**
+     * Basic constructor which we gave one id
+     * @param id
+     * @param lastName
+     * @param firstName
+     * @param email
+     * @param telephone
+     * @param adress
+     * @param subscription
+     */
+    public Member(int id, String lastName, String firstName, String email, String telephone, String adress, Subscription subscription){
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.telephone = telephone;
+        this.adress = adress;
+        this.id = id;
         this.mSubscription = subscription;
     }
     
@@ -43,7 +65,7 @@ public class Member {
     public Member(){}
 
     /**
-     * Get ID number
+     * Get last ID number
      * @return actual ID
      */
     public int getID(){
@@ -51,11 +73,19 @@ public class Member {
     }
 
     /**
+     * Return member fixed ID
+     * @return
+     */
+    public int getId(){
+        return this.id;
+    }
+
+    /**
      * Get last name
      * @return last name
      */
     public String getLastName(){
-        return lastName;
+        return this.lastName;
     }
 
     /**
@@ -63,7 +93,7 @@ public class Member {
      * @return first name
      */
     public String getFirstName(){
-        return firstName;
+        return this.firstName;
     }
 
     /**
@@ -71,7 +101,7 @@ public class Member {
      * @return email adress
      */
     public String getEmail(){
-        return email;
+        return this.email;
     }
 
     /**
@@ -79,7 +109,7 @@ public class Member {
      * @return mobile number
      */
     public String getTelephone(){
-        return telephone;
+        return this.telephone;
     }
 
     /**
@@ -87,7 +117,7 @@ public class Member {
      * @return adress
      */
     public String getAdress(){
-        return adress;
+        return this.adress;
     }
 
     /**
@@ -95,7 +125,7 @@ public class Member {
      * @return
      */
     public Subscription getSubscription(){
-        return mSubscription;
+        return this.mSubscription;
     }
 
 
@@ -151,12 +181,13 @@ public class Member {
      * Change of toString method to reference all class variables in output
      */
     public String toString(){
-        return "\nId: " + ID +
+        return "\nId: " + this.id +
         "\nLast name: " + this.lastName +
         "\nFirst name: " + this.firstName +
         "\nAddress: " + this.adress +
         "\nEmail: " + this.email +
         "\nPhone number: " + this.telephone +
-        "\nSubscription: " + this.mSubscription;
+        "\nSubscription: " + this.mSubscription +
+        "\n";
     }
 }

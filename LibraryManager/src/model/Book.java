@@ -8,6 +8,7 @@ public class Book{
     private String title;
     private String author;
     private String isbn;
+    private int id;
 
 
     /**
@@ -21,6 +22,21 @@ public class Book{
         this.author = author;
         this.isbn = isbn;
         ID++;
+        this.id = ID;
+    }
+
+    /**
+     * Basic constructor with given ID
+     * @param id
+     * @param title
+     * @param author
+     * @param isbn
+     */
+    public Book(int id, String title, String author, String isbn){
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.id = id;
     }
 
     /**
@@ -34,6 +50,14 @@ public class Book{
      */
     public int getID(){
         return ID;
+    }
+
+    /**
+     * Return book fixed ID
+     * @return
+     */
+    public int getId(){
+        return this.id;
     }
 
     /**
@@ -85,9 +109,10 @@ public class Book{
     }
 
     public String toString(){
-        return "\nID: " + ID +
+        return "\nID: " + this.id +
             "\nTitle: " + this.title +
             "\nAuthor: " + this.author +
-            "\nISBN: " + this.isbn;
+            "\nISBN: " + this.isbn +
+            "\n";
     }
 }

@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
         try {
             loanAllList = memberDao.getList();
 
-            System.out.println("All members list: " + loanAllList);
+            System.out.println("\n\tAll members list: " + loanAllList);
         } catch (Exception e) {
             throw new ServiceException("Can't get total list!\n", e);
         }
@@ -58,7 +58,7 @@ public class MemberServiceImpl implements MemberService {
                 }
             }
 
-            System.out.println("Returning all loans possibles: " + membersLoanDispo);
+            System.out.println("\n\tReturning all loans possibles: " + membersLoanDispo);
         } catch (Exception e) {
             throw new ServiceException("Can't get possibles bookings by member!\n", e);
         }
@@ -79,7 +79,7 @@ public class MemberServiceImpl implements MemberService {
         try {
             chosenOne = memberDao.getById(id);
 
-            System.out.println("Chosen member: " + chosenOne);
+            System.out.println("\n\tChosen member: " + chosenOne);
         } catch (Exception e) {
             throw new ServiceException("Can't get individual member!\n", e);
         }
@@ -110,7 +110,7 @@ public class MemberServiceImpl implements MemberService {
                 prenom = prenom.toUpperCase();
                 
                 id = memberDao.create(nom, prenom, adresse, email, telephone, subscription);
-                System.out.println("Actual new member ID: " + id);
+                System.out.println("\n\tActual new member ID: " + id);
             }
         } catch (Exception e) {
             throw new ServiceException("Can't create for a reason!\n", e);
@@ -134,7 +134,7 @@ public class MemberServiceImpl implements MemberService {
                 membre.setLastName(membre.getLastName().toUpperCase());
                 memberDao.update(membre);
 
-                System.out.println("Member " + membre + "successfull updated!");
+                System.out.println("\n\tMember " + membre + "successfull updated!");
             }
         } catch (Exception e) {
             throw new ServiceException("Can't be updated!\n", e);
@@ -152,7 +152,7 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             memberDao.delete(id);
-            System.out.println("Member " + id + "successfull deleted!");
+            System.out.println("\n\tMember " + id + "successfull deleted!");
         } catch (Exception e) {
             throw new ServiceException("Can't be deleted!\n", e);
         }
@@ -169,7 +169,7 @@ public class MemberServiceImpl implements MemberService {
 
         try {
             total = memberDao.count();
-            System.out.println("Total members: " + total);
+            System.out.println("\n\tTotal members: " + total);
         } catch (Exception e) {
             throw new ServiceException("Can't count all things!\n", e);
         }
