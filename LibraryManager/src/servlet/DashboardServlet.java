@@ -1,4 +1,4 @@
-package servlets;
+package servlet;
 
 import java.io.IOException;
 
@@ -25,35 +25,37 @@ public class DashboardServlet extends HttpServlet{
      * Function responsible for showing the system dashboard and showing the values
      * of members, books and loans
      */
-    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String action = request.getServletPath();
-        
-        if (action == "/dashboard"){
-            MemberService memberService = MemberServiceImpl.getInstance(); 
+    protected void doGet (final HttpServletRequest request, final HttpServletResponse response)
+            throws ServletException, IOException {
+        final String action = request.getServletPath();
+
+        if (action.equals("/dashboard")) {
+            final MemberService memberService = MemberServiceImpl.getInstance();
             try {
                 request.setAttribute("numberOfMembers", memberService.count());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-    
-            BookService bookService = BookServiceImpl.getInstance();
-            try {
-                request.setAttribute("numberOfBooks", bookService.count());
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 e.printStackTrace();
             }
 
-            LoanService loanService = LoanServiceImpl.getInstance();
+            final BookService bookService = BookServiceImpl.getInstance();
+            try {
+                request.setAttribute("numberOfBooks", bookService.count());
+            } catch (final Exception e) {
+                e.printStackTrace();
+            }
+
+            final LoanService loanService = LoanServiceImpl.getInstance();
             try {
                 request.setAttribute("numberOfLoans", loanService.count());
                 request.setAttribute("currentLoans", loanService.getListCurrent());
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 e.printStackTrace();
             }
 
             // Submit gathered information th the appropriate .jsp:
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/View/dashboard.jsp");
+            final RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/View/dashboard.jsp");
             dispatcher.forward(request, response);
+            // response.getWriter().println("PENIS");
         }
 
 

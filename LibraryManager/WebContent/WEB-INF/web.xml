@@ -9,7 +9,7 @@
   <!-- Dashboard servlet -->
   <servlet>
     <servlet-name>DashboardServlet</servlet-name>
-    <servlet-class>servlets.DashboardServlet</servlet-class>    
+    <servlet-class>servlet.DashboardServlet</servlet-class>    
   </servlet>
   <servlet-mapping>
     <servlet-name>DashboardServlet</servlet-name>
@@ -19,7 +19,7 @@
   <!-- EmpruntAdd servlet -->
   <servlet>
     <servlet-name>EmpruntAddServlet</servlet-name>
-    <servlet-class>servlets.EmpruntAddServlet</servlet-class>    
+    <servlet-class>servlet.EmpruntAddServlet</servlet-class>    
   </servlet>
   <servlet-mapping>
     <servlet-name>EmpruntAddServlet</servlet-name>
@@ -29,7 +29,7 @@
   <!-- EmprunttList servlet -->
   <servlet>
     <servlet-name>EmpruntListServlet</servlet-name>
-    <servlet-class>servlets.EmpruntListServlet</servlet-class>    
+    <servlet-class>servlet.EmpruntListServlet</servlet-class>    
   </servlet>
   <servlet-mapping>
     <servlet-name>EmpruntListServlet</servlet-name>

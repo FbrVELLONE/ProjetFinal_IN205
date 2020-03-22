@@ -1,10 +1,9 @@
-/home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/servlets/EmpruntAddServlet.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/dao/LoanDaoImpl.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/dao/LoanDao.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/services/BookServiceImpl.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/services/BookService.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/model/Book.java
-/home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/servlets/DashboardServlet.java
+/home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/servlet/DashboardServlet.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/model/Member.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/model/Loan.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/test/DaoTest.java
@@ -13,10 +12,11 @@
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/exception/DaoException.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/dao/BookDaoImpl.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/com/excilys/librarymanager/utils/FillDatabase.java
+/home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/servlet/EmpruntListServlet.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/services/LoanServiceImpl.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/services/LoanService.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/dao/MemberDao.java
-/home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/servlets/EmpruntListServlet.java
+/home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/servlet/EmpruntAddServlet.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/com/excilys/librarymanager/persistence/ConnectionManager.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/test/ServiceTest.java
 /home/vellone/ENSTA/IN205/projetFinal/LibraryManager/src/services/MemberServiceImpl.java

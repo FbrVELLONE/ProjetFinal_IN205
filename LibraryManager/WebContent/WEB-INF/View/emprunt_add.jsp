@@ -29,18 +29,22 @@
 	            <select id="idLivre" name="idLivre" class="browser-default">
 	              <option value="" disabled selected>-- Livres --</option>
                 
-                <%if (!avaibleBookList.isEmpty()){
-                  for (Book book : avaibleBookList) { %>
+                <%if (!avaibleBookList.isEmpty()){ %>
+                  <% for (Book book : avaibleBookList) { %>
                     <option value="<%=book.getId() %>">"<%=book.getTitle() %>", <%=book.getAuthor() %></option>
-                  <% }
-                } %>
+                  <% } %>
+                <% } %>
 	            </select>
 	          </div>
 	          <div class="input-field col s6">
 	            <select id="idMembre" name="idMembre" class="browser-default">
 	              <option value="" disabled selected>-- Membres --</option>
-	              <!-- TODO : parcourir la liste des membres pouvant emprunter et afficher autant d'options que n�cessaire, sur la base de l'exemple ci-dessous -->
-                  <option value="idDuMembre">Pr�nom et nom du membre</option>
+                
+                  <% if (!avaibleMemberList.isEmpty()){ %> 
+                    <% for (Member member : avaibleMemberList) {%>
+                      <option value="<%=member.getId() %>"><%=member.getLastName() %> <%=member.getFirstName() %></option>
+                    <% } %>
+                  <% } %>
 	            </select>
 	          </div>
 	        </div>
