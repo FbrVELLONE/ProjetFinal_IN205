@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Date;
 import java.time.LocalDate;
 
 import model.Loan;
@@ -25,7 +26,7 @@ public class LoanDaoImpl implements LoanDao{
 
     //Requisition Strings
     private final String _SelectAllQuery = "SELECT e.id AS id, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre ORDER BY dateRetour DESC;";
-    private final String _SelectNoReturnedQuery = "SELECT e.id AS id, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre WHERE dateRetour S NULL;";
+    private final String _SelectNoReturnedQuery = "SELECT e.id AS id, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre WHERE dateRetour IS NULL;";
     private final String _SelectNotReturnedMemQuery = "SELECT e.id AS id, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre WHERE dateRetour IS NULL AND membre.id = ?;";
 	private final String _SelectNotReturnedLivQuery = "SELECT e.id AS id, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre WHERE dateRetour IS NULL AND livre.id = ?;";
 	private final String _SelectOneQuery = "SELECT e.id AS idEmprunt, idMembre, nom, prenom, adresse, email, telephone, abonnement, idLivre, titre, auteur, isbn, dateEmprunt, dateRetour FROM emprunt AS e INNER JOIN membre ON membre.id = e.idMembre INNER JOIN livre ON livre.id = e.idLivre WHERE e.id = ?;";
@@ -69,7 +70,7 @@ public class LoanDaoImpl implements LoanDao{
             MemberDao memberDao = MemberDaoImpl.getInstance();
             BookDao bookDao = BookDaoImpl.getInstance();
             while(rst.next()){
-                loans.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
+                loans.add(new Loan(rst.getInt("id"), memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
 
         } catch (Exception e) {
@@ -115,7 +116,7 @@ public class LoanDaoImpl implements LoanDao{
             MemberDao memberDao = MemberDaoImpl.getInstance();
             BookDao bookDao = BookDaoImpl.getInstance();
             while (rst.next()) {
-                currentLoans.add(new Loan(memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
+                currentLoans.add(new Loan(rst.getInt("id"), memberDao.getById(rst.getInt("idMembre")), bookDao.getById(rst.getInt("idLivre")), rst.getDate("dateEmprunt").toLocalDate(), rst.getDate("dateRetour") == null ? null : rst.getDate("dateRetour").toLocalDate()));
             }
 
         } catch (Exception e) {
@@ -145,7 +146,7 @@ public class LoanDaoImpl implements LoanDao{
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement(_SelectNotReturnedMemQuery);
-            stmt.setInt(0, idMembre);
+            stmt.setInt(1, idMembre);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -288,18 +289,18 @@ public class LoanDaoImpl implements LoanDao{
         //Try to prepare statement query
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement(_CreateQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt = con.prepareStatement(_CreateQuery);
             stmt.setInt(1, idMembre);
             stmt.setInt(2, idLivre);
-            stmt.setString(3, dateLoan+"");
-            stmt.setString(4, dateLoan.plusDays(7l)+"");
+            stmt.setString(3, dateLoan + "");
+            stmt.setDate(4, null);
         } catch (Exception e) {
             e.printStackTrace();
         }
         
         //Try for exec the request
         try {
-            stmt.executeQuery();
+            stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

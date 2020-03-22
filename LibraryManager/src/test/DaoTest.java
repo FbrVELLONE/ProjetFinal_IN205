@@ -18,8 +18,9 @@ public class DaoTest{
 	public static void main(String[] args) throws Exception {
         FillDatabase.main(args);
         
-        //testMember();
-        //testBook();
+        testMember();
+        testBook();
+        testLoan();
     }	   
 
     public static void testMember() throws DaoException {
@@ -77,5 +78,37 @@ public class DaoTest{
         System.out.println("\n\tTotal books in DB: " + totalCurrentBooks);
     }
 
+    public static void testLoan() throws DaoException{
+        LoanDao loanDao = LoanDaoImpl.getInstance();
 
+        List<Loan> loanList = new ArrayList<Loan>();
+        loanList = loanDao.getList();
+        System.out.println("\n\tTotal list: " + loanList);
+
+        loanList = loanDao.getListCurrent();
+        System.out.println("\n\tCurrent list: " + loanList);
+
+        loanList = loanDao.getListCurrentByMembre(5);
+        System.out.println("\n\tCurrent list by member: " + loanList);
+
+        loanList = loanDao.getListCurrentByLivre(2);
+        System.out.println("\n\tCurrent list by member: " + loanList);
+
+        Loan loanTest = loanDao.getById(6);
+        System.out.println("\n\tSelected Loan: " + loanTest);
+
+        loanDao.create(1, 4, LocalDate.now());
+        loanList = loanDao.getList();
+        System.out.println("\n\tTotal updated by one creation: " + loanList);
+
+        Book bookTest = new Book("The art of programation", "Joseph", "555331");
+        Member memberTest = new Member("Vellone", "Fabricio", "fabricio.vellone@ensta-paris.fr", "+330766625959", "Allée des techniques avancées", Member.Subscription.VIP);
+        loanTest = new Loan(2, memberTest, bookTest, LocalDate.now(), LocalDate.now().plusDays(7l));
+        loanDao.update(loanTest);
+        loanList = loanDao.getList();
+        System.out.println("\n\tTotal updated: " + loanList);
+
+        int total = loanDao.count();
+        System.out.println("\n\tTotal loans in DB: " + total);
+    }
 }
