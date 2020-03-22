@@ -19,8 +19,11 @@ import services.MemberServiceImpl;
  * DashboardServlet responsible for making the interaction between the services and the front page
  */
 public class DashboardServlet extends HttpServlet{
+    private static final long serialVersionUID = 1L;
+
     /**
-     * Function responsible for showing the system dashboard and showing the values of members, books and loans
+     * Function responsible for showing the system dashboard and showing the values
+     * of members, books and loans
      */
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String action = request.getServletPath();

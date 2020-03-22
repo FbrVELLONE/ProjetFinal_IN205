@@ -21,22 +21,26 @@
       </div>
       <div class="row">
       <div class="container">
-        <h5>Sélectionnez le livre et le membre emprunteur</h5>
+        <h5>Sï¿½lectionnez le livre et le membre emprunteur</h5>
         <div class="row">
 	      <form action="/LibraryManager/emprunt_add" method="post" class="col s12">
 	        <div class="row">
 	          <div class="input-field col s6">
 	            <select id="idLivre" name="idLivre" class="browser-default">
 	              <option value="" disabled selected>-- Livres --</option>
-	              <!-- TODO : parcourir la liste des livres disponibles et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
-                  <option value="idDuLivre">"Titre du livre", de Nom de l'auteur</option>
+                
+                <%if (!avaibleBookList.isEmpty()){
+                  for (Book book : avaibleBookList) { %>
+                    <option value="<%=book.getId() %>">"<%=book.getTitle() %>", <%=book.getAuthor() %></option>
+                  <% }
+                } %>
 	            </select>
 	          </div>
 	          <div class="input-field col s6">
 	            <select id="idMembre" name="idMembre" class="browser-default">
 	              <option value="" disabled selected>-- Membres --</option>
-	              <!-- TODO : parcourir la liste des membres pouvant emprunter et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
-                  <option value="idDuMembre">Prénom et nom du membre</option>
+	              <!-- TODO : parcourir la liste des membres pouvant emprunter et afficher autant d'options que nï¿½cessaire, sur la base de l'exemple ci-dessous -->
+                  <option value="idDuMembre">Prï¿½nom et nom du membre</option>
 	            </select>
 	          </div>
 	        </div>

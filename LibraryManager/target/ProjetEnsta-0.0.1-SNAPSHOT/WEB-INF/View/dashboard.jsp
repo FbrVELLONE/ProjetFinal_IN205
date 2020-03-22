@@ -23,7 +23,7 @@
         <div class="col l4 s6">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>12</h3> <!-- TODO : afficher le nombre de membres à la place de 12 -->
+              <h3><%=numberOfMembers %></h3> 
               <p>Membres</p>
             </div>
             <div class="icon">
@@ -35,7 +35,7 @@
         <div class="col l4 s6">
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>27</h3> <!-- TODO : afficher le nombre de livres à la place de 27 -->
+              <h3><%=numberOfBooks %></h3>
               <p>Livres</p>
             </div>
             <div class="icon">
@@ -47,7 +47,7 @@
         <div class="col l4 s6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>1515</h3> <!-- TODO : afficher le nombre d'emprunts à la place de 1515 -->
+              <h3><>%=numberOfLoans %</h3>
               <p>Emprunts</p>
             </div>
             <div class="icon">
@@ -69,17 +69,16 @@
                     </tr>
                 </thead>
                 <tbody id="results">
-                
-                    <tr>
-                        <td>Titre du livre, <em>de Nom de l'auteur</em></td>
-                        <td>Prénom et nom du membre emprunteur</td>
-                        <td>Date de l'emprunt</td>
-                        <td>
-                            <a href="emprunt_return?id=idDeLEmprunt"><ion-icon class="table-item" name="log-in"></a>
-                        </td>
-                    </tr>
-                    
-                     <!-- TODO : parcourir la liste des emprunts en cours et les afficher selon la structure d'exemple ci-dessus -->
+                  <% if(!currentLoans.isEmpty()) {
+                    for(Loan loan : currentLoans) { %>
+                      <tr>
+                        <td><%= loan.getBook().getTitle() %>, <em><%= loan.getBook().getAuthor() %></em></td>
+                        <td><%= loan.getMember().getFirstName() %> <%= loan.getMember().getLastName() %></td>
+                        <td><%= loan.getLoanDate() %></td>
+                        <td><a href='emprunt_return?id=<%= loan.getId() %>'><ion-icon class="table-item" name="log-in"></a></td>													
+                      </tr>
+                    <% }
+                  } %>
                 </tbody>
             </table>
           </div>

@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [22/Mar/2020:20:17:52 +0100] "GET /ProjetEnsta HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [22/Mar/2020:20:17:52 +0100] "GET /ProjetEnsta/ HTTP/1.1" 404 975 http-bio-8080-exec-3 9
+0:0:0:0:0:0:0:1 - - [22/Mar/2020:20:17:58 +0100] "GET /ProjetEnsta/dashboard HTTP/1.1" 404 993 http-bio-8080-exec-4 1
+0:0:0:0:0:0:0:1 - - [22/Mar/2020:20:18:36 +0100] "GET /dashboard HTTP/1.1" 404 - http-bio-8080-exec-5 0
+0:0:0:0:0:0:0:1 - - [22/Mar/2020:20:18:42 +0100] "GET /ProjetEnsta/dashboard HTTP/1.1" 404 993 http-bio-8080-exec-7 3

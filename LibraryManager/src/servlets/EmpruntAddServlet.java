@@ -21,7 +21,9 @@ import services.MemberServiceImpl;
  */
 public class EmpruntAddServlet extends HttpServlet{
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private static final long serialVersionUID = 1L;
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         
         if (action == "/emprunt_add"){
@@ -50,7 +52,7 @@ public class EmpruntAddServlet extends HttpServlet{
 
         try {
             if (request.getParameter("idMembre") == null || request.getParameter("idLivre") == null){
-                throw new ServletException("Cant add a new loan, some data hast been received");
+                throw new ServletException("Cant add a new loan, some data hasn't been received");
             } else{
                 loanService.create(Integer.parseInt(request.getParameter("idMembre")), Integer.parseInt(request.getParameter("idLivre")), LocalDate.now());
 						

@@ -5,4 +5,34 @@
     <error-code>500</error-code>
     <location>/WEB-INF/View/error_500.jsp</location>
   </error-page>
+
+  <!-- Dashboard servlet -->
+  <servlet>
+    <servlet-name>DashboardServlet</servlet-name>
+    <servlet-class>servlets.DashboardServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DashboardServlet</servlet-name>
+    <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+
+  <!-- EmpruntAdd servlet -->
+  <servlet>
+    <servlet-name>EmpruntAddServlet</servlet-name>
+    <servlet-class>servlets.EmpruntAddServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpruntAddServlet</servlet-name>
+    <url-pattern>/emprunt_add</url-pattern>
+  </servlet-mapping>
+
+  <!-- EmprunttList servlet -->
+  <servlet>
+    <servlet-name>EmpruntListServlet</servlet-name>
+    <servlet-class>servlets.EmpruntListServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpruntListServlet</servlet-name>
+    <url-pattern>/emprunt_list</url-pattern>
+  </servlet-mapping>
 </web-app>

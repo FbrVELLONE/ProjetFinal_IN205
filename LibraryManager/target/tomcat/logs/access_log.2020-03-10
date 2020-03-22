@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-0:0:0:0:0:0:0:1 - - [10/Mar/2020:09:51:50 +0100] "GET /ProjetEnsta HTTP/1.1" 302 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [10/Mar/2020:09:51:50 +0100] "GET /ProjetEnsta/ HTTP/1.1" 404 975 http-bio-8080-exec-3 28
-0:0:0:0:0:0:0:1 - - [10/Mar/2020:09:51:51 +0100] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0
-=======
-0:0:0:0:0:0:0:1 - - [10/Mar/2020:09:51:32 +0100] "GET /ProjetEnsta HTTP/1.1" 302 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [10/Mar/2020:09:51:32 +0100] "GET /ProjetEnsta/ HTTP/1.1" 404 975 http-bio-8080-exec-3 25
-0:0:0:0:0:0:0:1 - - [10/Mar/2020:09:51:33 +0100] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0
->>>>>>> 256e03337f648bda784bf80cf7032ddf3555c4b9
