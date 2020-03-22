@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <!DOCTYPE html>
@@ -71,7 +72,7 @@
                 </thead>
                 <tbody id="results">
                   <c:if test="${!currentLoans.isEmpty()}">
-                    <c:forEach items="currentLoans" var="loan">
+                    <c:forEach items="${currentLoans}" var="loan">
                       <tr>
                           <td>${loan.book.title}, <em>${loan.book.author}</em></td>
                           <td>${loan.member.firstName} ${loan.member.lastName}</td>

@@ -55,7 +55,7 @@ public class DashboardServlet extends HttpServlet{
             // Submit gathered information th the appropriate .jsp:
             final RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/View/dashboard.jsp");
             dispatcher.forward(request, response);
-            // response.getWriter().println("PENIS");
+            
         }
 
 

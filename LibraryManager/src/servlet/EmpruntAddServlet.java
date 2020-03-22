@@ -26,7 +26,7 @@ public class EmpruntAddServlet extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         
-        if (action == "/emprunt_add"){
+        if (action.equals("/emprunt_add")){
             MemberService memberService = MemberServiceImpl.getInstance();
             try {
                 request.setAttribute("availableMemberList", memberService.getListMembreEmpruntPossible());
@@ -57,9 +57,6 @@ public class EmpruntAddServlet extends HttpServlet{
                 loanService.create(Integer.parseInt(request.getParameter("idMembre")), Integer.parseInt(request.getParameter("idLivre")), LocalDate.now());
 						
 				request.setAttribute("loanList", loanService.getListCurrent());
-				request.setAttribute("show", "all");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/View/emprunt_list.jsp");
-				dispatcher.forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
