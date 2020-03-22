@@ -23,6 +23,10 @@ public class DaoTest{
         testLoan();
     }	   
 
+    /**
+     * Tests for member's dao class
+     * @throws DaoException
+     */
     public static void testMember() throws DaoException {
         MemberDao memberDao = MemberDaoImpl.getInstance();
         
@@ -51,6 +55,10 @@ public class DaoTest{
         System.out.println("\n\tTotal members in current DB " + totalMembers);
     }
 
+    /**
+     * Tests for book's dao class
+     * @throws DaoException
+     */
     public static void testBook() throws DaoException{
         BookDao bookDao = BookDaoImpl.getInstance();
 
@@ -78,6 +86,10 @@ public class DaoTest{
         System.out.println("\n\tTotal books in DB: " + totalCurrentBooks);
     }
 
+    /**
+     * Tests for loans's dao class
+     * @throws DaoException
+     */
     public static void testLoan() throws DaoException{
         LoanDao loanDao = LoanDaoImpl.getInstance();
 

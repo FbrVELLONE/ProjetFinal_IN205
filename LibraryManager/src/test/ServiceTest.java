@@ -1,5 +1,6 @@
 package test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,16 @@ public class ServiceTest {
     public static void main(String[] args) throws Exception{
         FillDatabase.main(args);
 
-        //testBook();
-        // testMember();
+        testBook();
+        testMember();
         testLoan();
         
     }
     
+    /**
+     * Tests for book service class
+     * @throws ServiceException
+     */
     public static void testBook() throws ServiceException{
         BookService bookService = BookServiceImpl.getInstance();
 
@@ -38,6 +43,10 @@ public class ServiceTest {
         bookService.count();
     }
 
+    /**
+     * Tests for member service class
+     * @throws ServiceException
+     */
     public static void testMember() throws ServiceException{
         MemberService memberService = MemberServiceImpl.getInstance();
 
@@ -55,8 +64,22 @@ public class ServiceTest {
         memberService.count();
     }
 
+    /**
+     * Tests for loan service class
+     * @throws ServiceException
+     */
     public static void testLoan() throws ServiceException{
         LoanService loanService = LoanServiceImpl.getInstance();
-        // Loan loanTest = new Loan(memberTest, bookTest, LocalDate.now(), LocalDate.now().plusDays(7l));
+
+        loanService.getList();
+        loanService.getListCurrent();
+        loanService.getListCurrentByMembre(4);
+        loanService.getListCurrentByLivre(1);
+        loanService.getById(3);
+        loanService.create(3, 2, LocalDate.now());
+        loanService.returnBook(4);
+        loanService.count();
+        loanService.isLivreDispo(4);
+        // loanService.isEmpruntPossible(membre);
     }
 }
