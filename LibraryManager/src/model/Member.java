@@ -38,6 +38,26 @@ public class Member {
         this.id = ID;
         this.mSubscription = subscription;
     }
+
+    /**
+     * Basic constructor which we gave one id
+     * @param id
+     * @param lastName
+     * @param firstName
+     * @param email
+     * @param telephone
+     * @param adress
+     * @param subscription
+     */
+    public Member(int id, String lastName, String firstName, String email, String telephone, String adress, Subscription subscription){
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.telephone = telephone;
+        this.adress = adress;
+        this.id = id;
+        this.mSubscription = subscription;
+    }
     
     /**
      * Default consctrutor
@@ -65,7 +85,7 @@ public class Member {
      * @return last name
      */
     public String getLastName(){
-        return lastName;
+        return this.lastName;
     }
 
     /**
@@ -73,7 +93,7 @@ public class Member {
      * @return first name
      */
     public String getFirstName(){
-        return firstName;
+        return this.firstName;
     }
 
     /**
@@ -81,7 +101,7 @@ public class Member {
      * @return email adress
      */
     public String getEmail(){
-        return email;
+        return this.email;
     }
 
     /**
@@ -89,7 +109,7 @@ public class Member {
      * @return mobile number
      */
     public String getTelephone(){
-        return telephone;
+        return this.telephone;
     }
 
     /**
@@ -97,7 +117,7 @@ public class Member {
      * @return adress
      */
     public String getAdress(){
-        return adress;
+        return this.adress;
     }
 
     /**
@@ -105,7 +125,7 @@ public class Member {
      * @return
      */
     public Subscription getSubscription(){
-        return mSubscription;
+        return this.mSubscription;
     }
 
 

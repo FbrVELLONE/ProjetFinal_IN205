@@ -26,6 +26,20 @@ public class Book{
     }
 
     /**
+     * Basic constructor with given ID
+     * @param id
+     * @param title
+     * @param author
+     * @param isbn
+     */
+    public Book(int id, String title, String author, String isbn){
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.id = id;
+    }
+
+    /**
      * Default consctrutor
      */
     public Book(){}

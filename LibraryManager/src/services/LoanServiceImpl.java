@@ -32,7 +32,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             allLoans = loanDao.getList();
 
-            System.out.println("All loans list: " + allLoans);
+            System.out.println("\n\tAll loans list: " + allLoans);
         } catch (Exception e) {
             throw new ServiceException("Can't get total list!\n", e);
         }
@@ -52,7 +52,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             loanList = loanDao.getListCurrent();
 
-            System.out.println("All currents loans not returneds yet: " + loanList);
+            System.out.println("\n\tAll currents loans not returneds yet: " + loanList);
         } catch (Exception e) {
             throw new ServiceException("Can't get current list!\n", e);
         }
@@ -73,7 +73,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             currentLists = loanDao.getListCurrentByMembre(idMembre);
 
-            System.out.println("All currents loans not returneds yet by member: " + currentLists);
+            System.out.println("\n\tAll currents loans not returneds yet by member: " + currentLists);
         } catch (Exception e) {
             throw new ServiceException("Can't get current list by member!\n", e);
         }
@@ -94,7 +94,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             loanList = loanDao.getListCurrentByLivre(idLivre);
 
-            System.out.println("All currents loans not returneds yet by books: " + loanList);
+            System.out.println("\n\tAll currents loans not returneds yet by books: " + loanList);
         } catch (Exception e) {
             throw new ServiceException("Can't get current list by book!\n", e);
         }
@@ -115,7 +115,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             chosenLoan = loanDao.getById(id);
 
-            System.out.println("Current loan not returned yet: " + chosenLoan);
+            System.out.println("\n\tGetting by ID: " + chosenLoan);
         } catch (Exception e) {
             throw new ServiceException("Can't get this specific booking!\n", e);
         }
@@ -133,7 +133,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             loanDao.create(idMembre, idLivre, dateEmprunt);
 
-            System.out.println("\nCreate new loan sucessfully!\n");
+            System.out.println("\n\t\nCreate new loan sucessfully!\n");
         } catch (Exception e) {
             throw new ServiceException("Can't be created!\n", e);
         }
@@ -152,7 +152,7 @@ public class LoanServiceImpl implements LoanService{
             update.setReturnDate(LocalDate.now());
             loanDao.update(update);
 
-            System.out.println("Loan " + update + "successfull updated! Book returned!");
+            System.out.println("\n\tLoan " + update + "successfull updated! Book returned!");
         } catch (Exception e) {
             throw new ServiceException("Can't be returned yet!\n", e);
         }
@@ -170,7 +170,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             total = loanDao.count();
 
-            System.out.println("Total members: " + total);
+            System.out.println("\n\tTotal members: " + total);
         } catch (Exception e) {
             throw new ServiceException("Can't be counted!\n", e);
         }
@@ -189,7 +189,7 @@ public class LoanServiceImpl implements LoanService{
 
         try {
             disponible = loanDao.getListCurrentByLivre(idLivre).isEmpty();
-            System.out.println("Status of chosen Book: " + disponible);
+            System.out.println("\n\tStatus of chosen Book: " + disponible);
 
             return disponible;
         } catch (Exception e) {
@@ -211,7 +211,7 @@ public class LoanServiceImpl implements LoanService{
 
         try {
             disponible = loanDao.getListCurrentByMembre(membre.getID()).isEmpty();
-            System.out.println("The member can get another book?: " + disponible);
+            System.out.println("\n\tThe member can get another book?: " + disponible);
 
             return disponible;
         } catch (Exception e) {

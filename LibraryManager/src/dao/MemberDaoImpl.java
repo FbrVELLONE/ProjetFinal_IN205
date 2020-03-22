@@ -4,7 +4,6 @@ import java.util.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import model.Member;
@@ -33,6 +32,7 @@ public class MemberDaoImpl implements MemberDao{
 
     /**
      * Function responsible for returning all members in the database
+     * @return the complete list
      */
     @Override
     public List<Member> getList() throws DaoException{
@@ -65,7 +65,7 @@ public class MemberDaoImpl implements MemberDao{
         //Try to get all requests
         try {
             while(rst.next()){
-                members.add(new Member(rst.getString("nom"), rst.getString("prenom"), rst.getString("adresse"), rst.getString("email"), rst.getString("telephone"), Member.Subscription.valueOf(rst.getString("abonnement"))));
+                members.add(new Member(rst.getInt("id"), rst.getString("nom"), rst.getString("prenom"), rst.getString("email"), rst.getString("telephone"), rst.getString("adresse"), Member.Subscription.valueOf(rst.getString("abonnement"))));
             }
 
         } catch (Exception e) {
@@ -78,6 +78,7 @@ public class MemberDaoImpl implements MemberDao{
     /**
      * Get one specific member of the list with his ID
      * @param id number specific of member
+     * @return Get by chosen ID
      */
     @Override
 	public Member getById(int id) throws DaoException{
@@ -111,7 +112,8 @@ public class MemberDaoImpl implements MemberDao{
         //Try to get all requests
         try {
             if(rst.next()){
-                memberById = new Member(rst.getString("nom"), rst.getString("prenom"), rst.getString("email"), rst.getString("telephone"), rst.getString("adresse"), Member.Subscription.valueOf(rst.getString("abonnement")));
+                memberById = new Member(rst.getInt("id"), rst.getString("nom"), rst.getString("prenom"), rst.getString("email"), rst.getString("telephone"), rst.getString("adresse"), Member.Subscription.valueOf(rst.getString("abonnement")));
+
             }
 
         } catch (Exception e) {
@@ -151,7 +153,7 @@ public class MemberDaoImpl implements MemberDao{
             stmt.setString(3, adresse);
             stmt.setString(4, email);
             stmt.setString(5, telephone);
-            stmt.setString(6, subscription+"");
+            stmt.setString(6, subscription.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -159,11 +161,12 @@ public class MemberDaoImpl implements MemberDao{
         //Try for exec the request
         ResultSet rst = null;
         try {
-            rst = stmt.executeQuery();
+            stmt.executeUpdate();
+            rst = stmt.getGeneratedKeys();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
         //Try to get all requests
         try {
             if(rst.next()){
@@ -200,7 +203,7 @@ public class MemberDaoImpl implements MemberDao{
             stmt.setString(3, Member.getAdress());
             stmt.setString(4, Member.getEmail());
             stmt.setString(5, Member.getTelephone());
-            stmt.setString(6, Member.getSubscription()+"");
+            stmt.setString(6, Member.getSubscription().toString());
             stmt.setInt(7, Member.getId());
 
         } catch (Exception e) {

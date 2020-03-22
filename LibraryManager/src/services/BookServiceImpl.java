@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService{
         try {
             totalList = bookDao.getList();
 
-            System.out.println("All books gets: " + totalList);
+            System.out.println("\n\tAll books gets: " + totalList);
         } catch (Exception e) {
             throw new ServiceException("Can't get total list!\n", e);
         }
@@ -55,11 +55,11 @@ public class BookServiceImpl implements BookService{
             allBooks = bookDao.getList();
             
             for (int i = 0; i < allBooks.size(); i++) {
-                if (loanService.isLivreDispo(allBooks.get(i).getID()))
+                if (loanService.isLivreDispo(allBooks.get(i).getId()))
                     booksDispo.add(allBooks.get(i));
             }
             
-            System.out.println("All books disponibles for booking: " + booksDispo);
+            System.out.println("\n\tAll books disponibles for booking: " + booksDispo);
         } catch (Exception e) {
             throw new ServiceException("Can't get disponible list!\n", e);
         }
@@ -80,7 +80,7 @@ public class BookServiceImpl implements BookService{
         try {
             chosenBook = bookDao.getById(id);
 
-            System.out.println("The chosen book was: " + chosenBook);
+            System.out.println("\n\tThe chosen book was: " + chosenBook);
         } catch (Exception e) {
             throw new ServiceException("Can't get the chosen book!\n", e);
         }
@@ -105,9 +105,9 @@ public class BookServiceImpl implements BookService{
                 throw new ServiceException("Empty Title! Can't create");
             } else{
                 id = bookDao.create(titre, auteur, isbn);
+                System.out.println("\n\tNew book instance created id: " + id);
             }
 
-            System.out.println("New book instance created id: " + id);
         } catch (Exception e) {
             throw new ServiceException("Can't create the specific book!\n", e);
         }
@@ -124,13 +124,13 @@ public class BookServiceImpl implements BookService{
         BookDao bookDao = BookDaoImpl.getInstance();
 
         try {
-            if (livre.getAuthor() == null || livre.getAuthor() == ""){
+            if (livre.getTitle() == null || livre.getTitle() == ""){
                 throw new ServiceException("Empty Title! Can't update");
             } else{
                 bookDao.update(livre);
+                System.out.println("\n\tThe book " + livre + " was successfully updated!");
             }
             
-            System.out.println("The book " + livre + " was successfully updated!");
         } catch (Exception e) {
             throw new ServiceException("Can't be updated!\n", e);
         }
@@ -147,7 +147,7 @@ public class BookServiceImpl implements BookService{
         try {
             bookDao.delete(id);
 
-            System.out.println("The book with id: " + id + " was deleted!");
+            System.out.println("\n\tThe book with id: " + id + " was deleted!");
         } catch (Exception e) {
             throw new ServiceException("Can't be deleted!\n", e);
         }
@@ -165,7 +165,7 @@ public class BookServiceImpl implements BookService{
         try {
             total = bookDao.count();
 
-            System.out.println("Number of books currently in the data base: " + total);
+            System.out.println("\n\tNumber of books currently in the data base: " + total);
         } catch (Exception e) {
             throw new ServiceException("Can't be counted!\n", e);
         }
