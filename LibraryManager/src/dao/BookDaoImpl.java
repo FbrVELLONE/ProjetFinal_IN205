@@ -41,11 +41,11 @@ public class BookDaoImpl implements BookDao {
              ResultSet result = preparedStatement.executeQuery();) {
 
             while (result.next()){
-                listOfBooks.add(new Book(result.getString("titre"), result.getString("auteur"), result.getString("isbn")));
+                listOfBooks.add(new Book(result.getInt("id"), result.getString("titre"), result.getString("auteur"), result.getString("isbn")));
             }
 
         } catch (SQLException e) {
-            //throw new DaoException("Error while uploading list of books from the database", e);
+            throw new DaoException("Error while uploading list of books from the database", e);
         }
 
         return listOfBooks;
@@ -72,12 +72,10 @@ public class BookDaoImpl implements BookDao {
             ResultSet result = GetByIdStatement(preparedStatement, id);){
             
             if (result.next()) {
-                book.setTitle(result.getString("titre"));
-                book.setAuthor(result.getString("auteur"));
-                book.setIsbn(result.getString("isbn"));
+                book = new Book(result.getInt("id"), result.getString("titre"), result.getString("auteur"), result.getString("isbn"));
             }
         } catch (SQLException e) {
-           // throw new DaoException("Error while uploading a books whose id is " + id + " from the database", e);
+            throw new DaoException("Error while uploading a books whose id is " + id + " from the database", e);
         }
 
         return book;
@@ -113,7 +111,7 @@ public class BookDaoImpl implements BookDao {
             }
 
         } catch (SQLException e) {
-            //throw new DaoException("Error. Cannot create book" + titre, e);
+            throw new DaoException("Error. Cannot create book" + titre, e);
         }
 
         return id;
@@ -131,10 +129,11 @@ public class BookDaoImpl implements BookDao {
 			preparedStatement.setString(1, book.getTitle());
             preparedStatement.setString(2, book.getAuthor());
             preparedStatement.setString(3, book.getIsbn());
+            preparedStatement.setInt(4, book.getId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-			//throw new DaoException("Error while updating a book " + book + "in the database", e);
+			throw new DaoException("Error while updating a book " + book + "in the database", e);
 		}
     }
 
@@ -151,7 +150,7 @@ public class BookDaoImpl implements BookDao {
             preparedStatement.executeUpdate();
             
 		} catch (SQLException e) {
-			//throw new DaoException("Error while deleting a book whose id is " + id + " from the database", e);
+			throw new DaoException("Error while deleting a book whose id is " + id + " from the database", e);
 		}
     }
 
@@ -162,7 +161,7 @@ public class BookDaoImpl implements BookDao {
      */
     @Override
     public int count() throws DaoException{
-        int nombreDeLivres = 0;
+        int nombreDeLivres = -1;
 
         try (Connection connection = ConnectionManager.getConnection();
 			 PreparedStatement preparedStatement = connection.prepareStatement(COUNT);
@@ -173,7 +172,7 @@ public class BookDaoImpl implements BookDao {
                 
             }
         } catch (SQLException e) {
-            //throw new DaoException("Error while counting the number of books in the database", e);
+            throw new DaoException("Error while counting the number of books in the database", e);
         } 
         
         return nombreDeLivres;

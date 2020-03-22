@@ -17,10 +17,9 @@ import model.*;
 public class DaoTest{
 	public static void main(String[] args) throws Exception {
         FillDatabase.main(args);
-        //Init dao 
-        LoanDao loanDao = LoanDaoImpl.getInstance();
-        BookDao bookDao = BookDaoImpl.getInstance();
-        testMember();
+        
+        //testMember();
+        //testBook();
     }	   
 
     public static void testMember() throws DaoException {
@@ -50,4 +49,33 @@ public class DaoTest{
         int totalMembers = memberDao.count();
         System.out.println("\n\tTotal members in current DB " + totalMembers);
     }
+
+    public static void testBook() throws DaoException{
+        BookDao bookDao = BookDaoImpl.getInstance();
+
+        List<Book> bookList = new ArrayList<Book>();
+        bookList = bookDao.getList();
+        System.out.println("Total book list: " + bookList);
+
+        Book bookByID = new Book();
+        bookByID = bookDao.getById(3);
+        System.out.println("\n\tBy ID: " + bookByID);
+
+        int idTest = bookDao.create("The art of programation", "Joseph", "555331");
+        System.out.println("\n\tNew id initialized: " + idTest);
+
+        Book bookTest = new Book(4, "The art of programation", "Joseph", "555331");
+        bookDao.update(bookTest);
+        bookList = bookDao.getList();
+        System.out.println("\n\tTotal book updated!: " + bookList);
+
+        bookDao.delete(1);
+        bookList = bookDao.getList();
+        System.out.println("\n\tTotal book updated by delete!: " + bookList);
+
+        int totalCurrentBooks = bookDao.count();
+        System.out.println("\n\tTotal books in DB: " + totalCurrentBooks);
+    }
+
+
 }
