@@ -48,6 +48,7 @@ public class LivreDetailsServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BookService bookService = BookServiceImpl.getInstance();
+        LoanService loanService = LoanServiceImpl.getInstance();
         try {
             if (req.getParameter("titre") == "" || req.getParameter("titre") == null){
                 throw new ServletException("Title is empty!");
@@ -57,14 +58,15 @@ public class LivreDetailsServlet extends HttpServlet{
                 adding.setTitle(req.getParameter("titre"));
                 adding.setIsbn(req.getParameter("isbn"));
                 bookService.update(adding);
+                req.setAttribute("id", adding.getId());
+                req.setAttribute("currentBookings", loanService.getListCurrentByLivre(adding.getId()));
+        
+                resp.sendRedirect(req.getContextPath() + "/livre_details?id=" + adding.getId());
             }
         } catch (Exception e) {
             new ServletException("Error in sending update! Title is empty!", e);
             req.setAttribute("errorMessage", "Title is empty!");
         }
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/View/livre_details.jsp");
-        dispatcher.forward(req, resp);
     }
     
 }

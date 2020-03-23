@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
@@ -25,23 +26,27 @@
             <thead>
               <tr>
                 <th>Nom</th>
-                <th>Prénom</th>
+                <th>PrÃ©nom</th>
                 <th class="hide-on-small-only">Adresse</th>
                 <th class="hide-on-small-only">E-mail</th>
-                <th class="hide-on-small-only">Téléphone</th>
-                <th>Détails</th>
+                <th class="hide-on-small-only">TÃ©lÃ©phone</th>
+                <th>DÃ©tails</th>
               </tr>
             </thead>
             <tbody>
-
-              <tr>
-                <td>Nom du membre</td>
-                <td>Prénom du membre</td>
-                <td class="hide-on-small-only">Adresse du membre</td>
-                <td class="hide-on-small-only">E-mail du membre</td>
-                <td class="hide-on-small-only">Téléphone du membre</td>
-                <td class="center"><a href="membre_details?id=idDuMembre"><ion-icon class="details" name="information-circle-outline"></ion-icon></a></td>
-              </tr>
+              <!--Code-->
+              <c:if test="${!memberList.isEmpty()}">
+                <c:forEach items="${memberList}" var="member">
+                  <tr>
+                    <td>${member.lastName}</td>
+                    <td>${member.firstName}</td>
+                    <td class="hide-on-small-only">${member.adress}</td>
+                    <td class="hide-on-small-only">${member.email}</td>
+                    <td class="hide-on-small-only">${member.telephone}</td>
+                    <td class="center"><a href="membre_details?id=${member.id}"><ion-icon class="details" name="information-circle-outline"></ion-icon></a></td>
+                  </tr>
+                </c:forEach>
+              </c:if>
 
               <!-- TODO : parcourir la liste des membres et les afficher selon la structure d'exemple ci-dessus -->
             </tbody>

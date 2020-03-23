@@ -85,7 +85,6 @@
     <servlet-name>LivreListServlet</servlet-name>
     <url-pattern>/livre_list</url-pattern>
   </servlet-mapping>
-</web-app>
 
     <!-- MembreAdd servlet -->
   <servlet>

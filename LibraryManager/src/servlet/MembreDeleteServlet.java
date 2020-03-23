@@ -25,7 +25,7 @@ public class MembreDeleteServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getServletPath();
 
-        if (action.equals("/member_delete")){
+        if (action.equals("/membre_delete")){
             MemberService memberService = MemberServiceImpl.getInstance();
             int id = -1;
             if (req.getParameter("id") != null){    
@@ -43,7 +43,7 @@ public class MembreDeleteServlet extends HttpServlet{
                 e.printStackTrace();
             }
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/View/livre_delete.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/View/membre_delete.jsp");
             dispatcher.forward(req, resp);
         }
     }
@@ -58,7 +58,7 @@ public class MembreDeleteServlet extends HttpServlet{
             e.printStackTrace();
         }
 
-        resp.sendRedirect(req.getContextPath() + "/livre_list");
+        resp.sendRedirect(req.getContextPath() + "/membre_list");
     }
     
 }

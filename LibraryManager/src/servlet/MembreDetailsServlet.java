@@ -30,13 +30,13 @@ public class MembreDetailsServlet extends HttpServlet{
             LoanService loanService = LoanServiceImpl.getInstance();
 
             try {
-                req.setAttribute("membre", memberService.getById(Integer.parseInt(req.getParameter("id"))));
+                req.setAttribute("member", memberService.getById(Integer.parseInt(req.getParameter("id"))));
             } catch (Exception e) {
                 new ServletException("Cant get the chosen member", e);
             }
 
             try {
-                req.setAttribute("currentBookings", loanService.getListCurrentByLivre(Integer.parseInt(req.getParameter("id"))));
+                req.setAttribute("currentByMember", loanService.getListCurrentByMembre(Integer.parseInt(req.getParameter("id"))));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -49,24 +49,36 @@ public class MembreDetailsServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         MemberService memberService = MemberServiceImpl.getInstance();
+        LoanService loanService = LoanServiceImpl.getInstance();
+
         try {
-            if (req.getParameter("titre") == "" || req.getParameter("titre") == null){
-                throw new ServletException("Title is empty!");
+            if (req.getParameter("prenom") == "" || req.getParameter("prenom") == null || req.getParameter("nom") == "" || req.getParameter("nom") == null){
+                throw new ServletException("First or Last names are empties!");
             } else{
                 Member adding = memberService.getById(Integer.parseInt(req.getParameter("id")));
-                adding.setFirstName(req.getParameter("firstName"));
-                adding.setLastName(req.getParameter("lastName"));
+                adding.setFirstName(req.getParameter("prenom"));
+                adding.setLastName(req.getParameter("nom"));
                 adding.setEmail(req.getParameter("email"));
                 adding.setTelephone(req.getParameter("telephone"));
+                if (req.getParameter("abonnement").equals("BASIC")){
+                    adding.setSubscription(Subscription.BASIC);
+                } else if (req.getParameter("abonnement").equals("PREMIUM")){
+                    adding.setSubscription(Subscription.PREMIUM);
+                } else if (req.getParameter("abonnement").equals("VIP")){
+                    adding.setSubscription(Subscription.VIP);
+                } 
                 memberService.update(adding);
+                req.setAttribute("id", adding.getId());
+                req.setAttribute("currentByMember", loanService.getListCurrentByMembre(adding.getId()));
+                
+                
+                resp.sendRedirect(req.getContextPath() + "/membre_details?id=" + adding.getId());
             }
         } catch (Exception e) {
             new ServletException("Error in sending update!", e);
             req.setAttribute("errorMessage", "Empty Parameter");
         }
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/View/member_details.jsp");
-        dispatcher.forward(req, resp);
     }
     
 }

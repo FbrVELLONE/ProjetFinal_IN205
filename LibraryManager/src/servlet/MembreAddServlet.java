@@ -12,7 +12,6 @@ import services.MemberService;
 import services.MemberServiceImpl;
 import services.LoanService;
 import services.LoanServiceImpl;
-import model.Member;
 import model.Member.Subscription;
 
 /**
@@ -34,7 +33,7 @@ public class MembreAddServlet extends HttpServlet{
             }
 
             // Submit gathered information th the appropriate .jsp:
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/View/member_add.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/View/membre_add.jsp");
             dispatcher.forward(req, resp);
         }
     }   
@@ -45,13 +44,13 @@ public class MembreAddServlet extends HttpServlet{
         LoanService loanService = LoanServiceImpl.getInstance();
         
         try {
-            if (req.getParameter("nom") == null || req.getParameter("prenom") == null || req.getParameter("adresse") == null ||req.getParameter("email") == null || req.getParameter("telephone") == null ){
-                throw new ServletException("Cant load because parameter was empty");
+            if (req.getParameter("nom") == null || req.getParameter("prenom") == null || req.getParameter("nom") == "" || req.getParameter("prenom") == "" ){
+                throw new ServletException("Cant load because FIrst or Last were empties");
             }else{
                 int id = memberService.create(req.getParameter("nom"), req.getParameter("prenom"), req.getParameter("adresse"), req.getParameter("email"), req.getParameter("telephone"), Subscription.BASIC);
                 req.setAttribute("id", id);
                 req.setAttribute("loanList", loanService.getListCurrentByMembre(id));
-                resp.sendRedirect(req.getContextPath() + "/livre_details?id=" + id);
+                resp.sendRedirect(req.getContextPath() + "/membre_details?id=" + id);
             }
         } catch (Exception e) {
             e.printStackTrace();

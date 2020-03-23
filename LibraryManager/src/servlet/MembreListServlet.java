@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import services.MemberService;
 import services.MemberServiceImpl;
-import services.LoanService;
-import services.LoanServiceImpl;
-import model.Member;
-import model.Member.Subscription;
 
 /**
  * MembreListServlet
@@ -25,7 +21,7 @@ public class MembreListServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getServletPath();
 
-        if (action.equals("/member_list")){
+        if (action.equals("/membre_list")){
             MemberService memberService = MemberServiceImpl.getInstance();
             try {
                 req.setAttribute("memberList", memberService.getList());
@@ -33,7 +29,7 @@ public class MembreListServlet extends HttpServlet{
                 e.printStackTrace();
             }
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/View/member_list.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/View/membre_list.jsp");
             dispatcher.forward(req, resp);
         }
     }
