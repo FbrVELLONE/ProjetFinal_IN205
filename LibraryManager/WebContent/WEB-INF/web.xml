@@ -6,7 +6,7 @@
     <location>/WEB-INF/View/error_500.jsp</location>
   </error-page>
 
-  <!-- Dashboard servlet -->
+    <!-- Dashboard servlet -->
   <servlet>
     <servlet-name>DashboardServlet</servlet-name>
     <servlet-class>servlet.DashboardServlet</servlet-class>    
@@ -16,7 +16,7 @@
     <url-pattern>/dashboard</url-pattern>
   </servlet-mapping>
 
-  <!-- EmpruntAdd servlet -->
+    <!-- EmpruntAdd servlet -->
   <servlet>
     <servlet-name>EmpruntAddServlet</servlet-name>
     <servlet-class>servlet.EmpruntAddServlet</servlet-class>    
@@ -26,7 +26,7 @@
     <url-pattern>/emprunt_add</url-pattern>
   </servlet-mapping>
 
-  <!-- EmprunttList servlet -->
+    <!-- EmprunttList servlet -->
   <servlet>
     <servlet-name>EmpruntListServlet</servlet-name>
     <servlet-class>servlet.EmpruntListServlet</servlet-class>    
@@ -34,5 +34,55 @@
   <servlet-mapping>
     <servlet-name>EmpruntListServlet</servlet-name>
     <url-pattern>/emprunt_list</url-pattern>
+  </servlet-mapping>
+
+    <!-- EmpruntReturn servlet -->
+  <servlet>
+    <servlet-name>EmpruntReturnServlet</servlet-name>
+    <servlet-class>servlet.EmpruntReturnServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpruntReturnServlet</servlet-name>
+    <url-pattern>/emprunt_return</url-pattern>
+  </servlet-mapping>
+
+    <!-- LivreAdd servlet -->
+  <servlet>
+    <servlet-name>LivreAddServlet</servlet-name>
+    <servlet-class>servlet.LivreAddServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LivreAddServlet</servlet-name>
+    <url-pattern>/livre_add</url-pattern>
+  </servlet-mapping>
+
+    <!-- LivreDelete servlet -->
+  <servlet>
+    <servlet-name>LivreDeleteServlet</servlet-name>
+    <servlet-class>servlet.LivreDeleteServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LivreDeleteServlet</servlet-name>
+    <url-pattern>/livre_delete</url-pattern>
+  </servlet-mapping>
+
+    <!-- LivreDetails servlet -->
+  <servlet>
+    <servlet-name>LivreDetailsServlet</servlet-name>
+    <servlet-class>servlet.LivreDetailsServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LivreDetailsServlet</servlet-name>
+    <url-pattern>/livre_details</url-pattern>
+  </servlet-mapping>
+
+    <!-- LivreList servlet -->
+  <servlet>
+    <servlet-name>LivreListServlet</servlet-name>
+    <servlet-class>servlet.LivreListServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LivreListServlet</servlet-name>
+    <url-pattern>/livre_list</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,0 +1,12 @@
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:23:53 +0100] "GET /ProjetEnsta/livre_list HTTP/1.1" 200 8179 http-bio-8080-exec-1 756
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:23:57 +0100] "GET /ProjetEnsta/livre_details?id=13 HTTP/1.1" 200 5597 http-bio-8080-exec-3 111
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:23:59 +0100] "GET /ProjetEnsta/livre_delete?id=13 HTTP/1.1" 200 4316 http-bio-8080-exec-4 66
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:00 +0100] "POST /ProjetEnsta/livre_delete HTTP/1.1" 302 - http-bio-8080-exec-5 12
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:00 +0100] "GET /ProjetEnsta/livre_list HTTP/1.1" 200 7823 http-bio-8080-exec-6 8
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:02 +0100] "GET /ProjetEnsta/livre_add HTTP/1.1" 200 4443 http-bio-8080-exec-7 86
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:08 +0100] "POST /ProjetEnsta/livre_add HTTP/1.1" 302 - http-bio-8080-exec-8 4
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:08 +0100] "GET /ProjetEnsta/livre_details?id=14 HTTP/1.1" 200 5600 http-bio-8080-exec-10 4
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:12 +0100] "GET /ProjetEnsta/livre_list HTTP/1.1" 200 8182 http-bio-8080-exec-10 7
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:26 +0100] "GET /ProjetEnsta/livre_details?id=14 HTTP/1.1" 200 5600 http-bio-8080-exec-10 10
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:29 +0100] "GET /ProjetEnsta/livre_list HTTP/1.1" 200 8182 http-bio-8080-exec-10 10
+0:0:0:0:0:0:0:1 - - [23/Mar/2020:05:24:31 +0100] "GET /ProjetEnsta/livre_details?id=12 HTTP/1.1" 200 5595 http-bio-8080-exec-10 11

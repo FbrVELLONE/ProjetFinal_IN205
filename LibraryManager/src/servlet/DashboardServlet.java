@@ -25,6 +25,7 @@ public class DashboardServlet extends HttpServlet{
      * Function responsible for showing the system dashboard and showing the values
      * of members, books and loans
      */
+    @Override
     protected void doGet (final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
         final String action = request.getServletPath();

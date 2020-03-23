@@ -17,13 +17,22 @@ import services.LoanServiceImpl;
 public class EmpruntListServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
-
-        if (action == "/emprunt_list") {
+        
+        if (action.equals("/emprunt_list")) {
             LoanService loanService = LoanServiceImpl.getInstance();
+            
             try {
-                request.setAttribute("currentLoans", loanService.getListCurrent());
+                if (request.getParameter("show") != null && request.getParameter("show").contains("all")){
+                    request.setAttribute("loanList", loanService.getList());
+                    request.setAttribute("show", "all");
+                }else {
+                    request.setAttribute("loanList", loanService.getListCurrent());
+                    request.setAttribute("show", "current");
+                }
+                    
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -31,6 +40,7 @@ public class EmpruntListServlet extends HttpServlet{
             // Submit gathered information th the appropriate .jsp:
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/View/emprunt_list.jsp");
             dispatcher.forward(request, response);
+
         }
     } 
     

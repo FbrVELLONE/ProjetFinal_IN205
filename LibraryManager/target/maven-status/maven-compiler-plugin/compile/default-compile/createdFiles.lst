@@ -1,9 +1,11 @@
 dao/MemberDaoImpl.class
+servlet/LivreListServlet.class
 test/ServiceTest.class
 model/Member$Subscription.class
 dao/BookDao.class
 exception/DaoException.class
 servlet/DashboardServlet.class
+servlet/LivreDetailsServlet.class
 exception/ServiceException.class
 dao/LoanDaoImpl.class
 dao/BookDaoImpl.class
@@ -14,11 +16,14 @@ services/BookServiceImpl.class
 services/MemberServiceImpl.class
 services/LoanServiceImpl.class
 model/Book.class
+servlet/LivreDeleteServlet.class
 services/BookService.class
 services/MemberService.class
 servlet/EmpruntAddServlet.class
 com/excilys/librarymanager/utils/FillDatabase.class
 dao/MemberDao.class
+servlet/LivreAddServlet.class
+servlet/EmpruntReturnServlet.class
 services/LoanService.class
 test/DaoTest.class
 dao/LoanDao.class

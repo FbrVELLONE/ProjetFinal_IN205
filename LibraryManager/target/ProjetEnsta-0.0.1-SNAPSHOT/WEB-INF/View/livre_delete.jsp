@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
@@ -21,16 +22,16 @@
       </div>
       <div class="row">
       <div class="container">
-      <h5>Suppression du livre n°42</h5> <!-- TODO : afficher l'id du livre au lieu de 42 -->
+      <h5>Suppression du livre nÂ°${book.id}</h5> <!-- TODO : afficher l'id du livre au lieu de 42 -->
         <div class="row">
-          <p>Êtes-vous sûr de vouloir supprimer le livre TitreDuLivre de NomDeLAuteur (code isbnDuLivre) ?</p> <!-- TODO : compléter les trois informations ci-contre -->
-	      <form action="/LibraryManager/livre_delete" method="post" class="col s12">
-            <input type="hidden" value="idDuLivre" name="id"> <!-- TODO : remplacer idDuLivre par l'id du livre -->
+          <p>ÃŠtes-vous sÃ»r de vouloir supprimer le livre ${book.title} de ${book.author} (code ${book.isbn}) ?</p> <!-- TODO : complï¿½ter les trois informations ci-contre -->
+	      <form action="livre_delete" method="post" class="col s12">
+            <input type="hidden" value="${book.id}" name="id"> <!-- TODO : remplacer idDuLivre par l'id du livre -->
 	        <div class="row center">
 	          <button class="btn waves-effect waves-light red" type="submit">Supprimer
 	            <i class="material-icons right">delete</i>
 	          </button>
-	          <a class="btn waves-effect waves-light orange" href="/LibraryManager/livre_details?id=idDuLivre">Annuler</a> <!-- TODO : remplacer idDuLivre par l'id du livre -->
+	          <a class="btn waves-effect waves-light orange" href="/LibraryManager/livre_details?id=${book.id}">Annuler</a> <!-- TODO : remplacer idDuLivre par l'id du livre -->
 	        </div>
 	      </form>
 	    </div>	    

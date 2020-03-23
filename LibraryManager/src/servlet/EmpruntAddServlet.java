@@ -23,6 +23,7 @@ public class EmpruntAddServlet extends HttpServlet{
 
     private static final long serialVersionUID = 1L;
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         
@@ -47,6 +48,7 @@ public class EmpruntAddServlet extends HttpServlet{
         }
     }
     
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         LoanService loanService = LoanServiceImpl.getInstance();
 
@@ -77,7 +79,6 @@ public class EmpruntAddServlet extends HttpServlet{
             request.setAttribute("errorMessage", e.getMessage());
         }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/View/emprunt_add.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect(request.getContextPath() + "/emprunt_list");
     }
 }
