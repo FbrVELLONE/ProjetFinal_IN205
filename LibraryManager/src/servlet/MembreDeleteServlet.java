@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import services.MemberService;
 import services.MemberServiceImpl;
-import services.LoanService;
-import services.LoanServiceImpl;
-import model.Member;
-import model.Member.Subscription;
 
 /**
  * MembreDeleteServlet

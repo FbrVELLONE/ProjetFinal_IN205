@@ -23,7 +23,7 @@
       <div class="row">
         <div class="container">
 	        <div class="col s12">
-            <h5>Show <a href='emprunt_list?show=all'>all</a>/<a href='emprunt_list?show=current'>current</a>
+            <h5>Show <a href='emprunt_list?show=all'>all</a> / <a href='emprunt_list?show=current'>current</a>
             </h5>
 	          <table class="striped">
                 <thead>
