@@ -4,7 +4,9 @@ package exception;
  * ServiceException is a class created to provide the exceptions linked to service type structures
  */
 public class ServiceException extends Exception{
-    public ServiceException() {
+	private static final long serialVersionUID = 1L;
+
+	public ServiceException() {
 		super();
     }
     

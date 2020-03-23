@@ -4,7 +4,9 @@ package exception;
  * DaoException is a class created to provide the exceptions linked to dao type structures
  */
 public class DaoException extends Exception{
-    public DaoException() {
+	private static final long serialVersionUID = 1L;
+
+	public DaoException() {
 		super();
     }
     

@@ -170,7 +170,7 @@ public class LoanServiceImpl implements LoanService{
         try {
             total = loanDao.count();
 
-            System.out.println("\n\tTotal members: " + total);
+            System.out.println("\n\tTotal loans: " + total);
         } catch (Exception e) {
             throw new ServiceException("Can't be counted!\n", e);
         }

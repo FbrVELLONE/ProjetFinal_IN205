@@ -26,6 +26,9 @@
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
+        <configuration>
+          <warSourceDirectory>target/ProjetEnsta-0.0.1-SNAPSHOT</warSourceDirectory>
+        </configuration>
       </plugin>
     </plugins>
   </build>

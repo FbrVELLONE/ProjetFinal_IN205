@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
@@ -21,22 +22,32 @@
       </div>
       <div class="row">
       <div class="container">
-        <h5>Sélectionnez le livre et le membre emprunteur</h5>
+        <h5>SÃ©lectionnez le livre et le membre emprunteur</h5>
         <div class="row">
-	      <form action="/LibraryManager/emprunt_add" method="post" class="col s12">
+	      <form action="emprunt_add" method="post" class="col s12">
 	        <div class="row">
 	          <div class="input-field col s6">
 	            <select id="idLivre" name="idLivre" class="browser-default">
 	              <option value="" disabled selected>-- Livres --</option>
-	              <!-- TODO : parcourir la liste des livres disponibles et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
-                  <option value="idDuLivre">"Titre du livre", de Nom de l'auteur</option>
+                <!--Code-->
+                <c:if test="${!availableBookList.isEmpty()}">
+                  <c:forEach items="${availableBookList}" var="book">
+                    <option value="${book.id}">"${book.title}", ${book.author}</option>
+                  </c:forEach>
+                </c:if>
+
 	            </select>
 	          </div>
 	          <div class="input-field col s6">
 	            <select id="idMembre" name="idMembre" class="browser-default">
 	              <option value="" disabled selected>-- Membres --</option>
-	              <!-- TODO : parcourir la liste des membres pouvant emprunter et afficher autant d'options que nécessaire, sur la base de l'exemple ci-dessous -->
-                  <option value="idDuMembre">Prénom et nom du membre</option>
+                  <!--Code-->
+                  <c:if test="${!availableMemberList.isEmpty()}">
+                    <c:forEach items="${availableMemberList}" var="member">
+                      <option value="${member.id}">${member.firstName} ${member.lastName}</option>
+                    </c:forEach>
+                  </c:if>
+                    
 	            </select>
 	          </div>
 	        </div>
