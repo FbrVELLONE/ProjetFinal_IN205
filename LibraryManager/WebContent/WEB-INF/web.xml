@@ -86,3 +86,44 @@
     <url-pattern>/livre_list</url-pattern>
   </servlet-mapping>
 </web-app>
+
+    <!-- MembreAdd servlet -->
+  <servlet>
+    <servlet-name>MembreAddServlet</servlet-name>
+    <servlet-class>servlet.MembreAddServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreAddServlet</servlet-name>
+    <url-pattern>/membre_add</url-pattern>
+  </servlet-mapping>
+
+    <!-- MembreDelete servlet -->
+  <servlet>
+    <servlet-name>MembreDeleteServlet</servlet-name>
+    <servlet-class>servlet.MembreDeleteServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreDeleteServlet</servlet-name>
+    <url-pattern>/membre_delete</url-pattern>
+  </servlet-mapping>
+
+    <!-- MembreDetails servlet -->
+  <servlet>
+    <servlet-name>MembreDetailsServlet</servlet-name>
+    <servlet-class>servlet.MembreDetailsServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreDetailsServlet</servlet-name>
+    <url-pattern>/membre_details</url-pattern>
+  </servlet-mapping>
+
+    <!-- MembreList servlet -->
+  <servlet>
+    <servlet-name>MembreListServlet</servlet-name>
+    <servlet-class>servlet.MembreListServlet</servlet-class>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembreListServlet</servlet-name>
+    <url-pattern>/membre_list</url-pattern>
+  </servlet-mapping>
+</web-app>

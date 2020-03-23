@@ -25,12 +25,12 @@ public class MembreDetailsServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getServletPath();
 
-        if (action.equals("/livre_details")){
+        if (action.equals("/membre_details")){
             MemberService memberService = MemberServiceImpl.getInstance();
             LoanService loanService = LoanServiceImpl.getInstance();
 
             try {
-                req.setAttribute("book", memberService.getById(Integer.parseInt(req.getParameter("id"))));
+                req.setAttribute("membre", memberService.getById(Integer.parseInt(req.getParameter("id"))));
             } catch (Exception e) {
                 new ServletException("Cant get the chosen member", e);
             }

@@ -34,7 +34,7 @@ public class MembreDeleteServlet extends HttpServlet{
 
             try {
                 if (id != -1){
-                    req.setAttribute("book", memberService.getById(id));
+                    req.setAttribute("membre", memberService.getById(id));
                     req.setAttribute("id", id);
                 } else{
 
